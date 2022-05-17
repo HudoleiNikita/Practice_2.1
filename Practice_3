@@ -1,0 +1,89 @@
+TASK 1
+#include <iostream>
+#include <ctime>
+using namespace std;
+int main() {
+    int d, m, y;
+    time_t now = time(0);
+    cout << "Our birhtday year:\n";
+    cin >> y;
+    cout << "Our birhtday month:\n";
+    cin >> m;
+    cout << "Our birhtday day:\n";
+    cin >> d;
+    tm *ltm = localtime(&now);
+    int day = ltm->tm_mday - d;
+    int month = 1 + ltm->tm_mon - m;
+    int year = 1900 + ltm->tm_year - y;
+    if (day < 0){
+        day += d;
+        cout << "Day: "<< day << endl;
+    }
+    if (month < 0)
+    {
+        month += 12;
+        year--;
+    }
+    cout << "Month: "<< month << endl;
+    cout << "Year: " << year <<endl;
+}
+TASK 2
+#include <iostream>
+using namespace std;
+struct MyException : public exception {
+    const char * what() const throw() {
+        return "C++ Exception";
+    }
+};
+
+int main() {
+    int a = 0;
+    int b = 0;
+    char operation;
+
+    cout << "Enter first number:";
+    cin >> a;
+    try {
+        if (cin.fail()) throw MyException();
+    }catch(MyException& e) {
+        cout << "Enter  a  number,  not  a symbol\n" << endl;
+        cout << e.what() << endl;
+        return 0;
+    }
+
+    cout << "Enter second number:";
+    cin >> b;
+    try {
+        if (cin.fail()) throw MyException();
+    }catch(MyException& e) {
+        cout << "Enter  a  number,  not  a symbol\n" << endl;
+        cout << e.what() << endl;
+        return 0;
+    }
+
+    cout << "Enter operation:";
+    cin >> operation;
+
+    switch(operation) {
+        case '-':
+            cout << "a - b = " << a - b << '\n';
+            break;
+        case '+':
+            cout << "a + b = " << a + b << '\n';
+            break;
+        case '*':
+            cout << "a * b = " << a * b << '\n';
+            break;
+        case '/':
+            if (b!=0){
+                cout << a/b;
+            }
+            try {
+                if (b == 0) throw MyException();
+            }catch(MyException& e) {
+                cout << "Don't divide by zero\n" << endl;
+                cout << e.what() << endl;
+            }
+            break;
+    }
+}
