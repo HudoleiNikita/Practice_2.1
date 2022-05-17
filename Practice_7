@@ -1,0 +1,145 @@
+Task 1
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main()
+{
+    ofstream object;
+    object.open("practice.txt");
+    object << "HO-HO-HO! Merry Christmas!";
+    object.close();
+    return 0;
+}
+
+Task 2
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main() {
+    system("chcp 65001");
+
+    string line;
+
+    ifstream fin("practice.txt");
+    while (fin >> line)
+        {
+            cout << line << endl;
+        }
+
+    fin.close();
+
+    return 0;
+}
+
+Task 3
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main() {
+    system("chcp 65001");
+
+    string line;
+
+    ifstream fin("practice.txt");
+    int n;
+    cout << "Enter the number of strings:\n";
+    cin >> n;
+    for (int i = 1; i <= n; ++i){
+        getline(fin, line);
+        {
+            cout << line << endl;
+        }
+    }
+    
+    fin.close();
+
+    return 0;
+}
+___
+
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main() {
+    system("chcp 65001");
+
+    int n = 1000;
+    
+    char* buffer = new char[n+1]; buffer[n]=0;
+    ifstream file("practice.txt");
+
+    file.read(buffer,n);
+    cout << buffer;
+    file.close();
+
+    return 0;
+}
+
+Task 4
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main() {
+    system("chcp 65001");
+    string s;
+    ifstream file("practice.txt");
+
+    for(file >> s; !file.eof(); file >> s)
+        cout << s << endl;
+    if (file.eof())
+        cout << "End of file\n";
+
+    file.close();
+
+    return 0;
+}
+
+Task 5
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main()
+{
+    string s;
+
+    ofstream object;
+    object.open("practice.txt");
+    cout << "Enter your string: \n";
+    cin >> s;
+
+    object << s;
+
+    object.close();
+    return 0;
+}
+
+Task 6
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main() {
+    system("chcp 65001");
+
+    string line;
+
+    ifstream fin("practice.txt");
+
+    while(getline(fin, line))
+        {
+            cout << line << endl;
+        }
+
+    fin.seekg(0,ios_base::end); //îòñ÷åò ñ êîíöà ôàéëà
+    cout << "File size in bytes: " << fin.tellg();
+
+    fin.close();
+
+    return 0;
+}
