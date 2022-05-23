@@ -1,0 +1,120 @@
+№1
+#include <iostream>
+using namespace std;
+class matrix
+{
+private:
+    int mat[3][3];
+    int l,c;
+public:
+    void getdate()
+    {
+
+        for (int i=0; i<5; i++)
+            for (int j=0; j<5; j++)
+                mat[i][j]=rand() %10;
+    };
+    void putdate()
+    {
+        cout << "Kol-vi linii:\n";
+        cin >> l;
+        cout << "Kol-vo stolbcov:\n";
+        cin >> c;
+        for (int i=0; i<l; i++)
+        {
+            for (int j=0; j<c; j++)
+                cout<<mat[i][j]<<" ";
+            cout<<endl;}
+    };
+
+};
+int main()
+{
+    matrix mat;
+    mat.getdate();
+    mat.putdate();
+
+    return 0;
+}
+
+
+
+
+
+
+№2
+#include "iostream"
+using namespace std;
+int main()
+{
+    int l, c, a[10][10], b[10][10], sum[10][10], i, j;
+    cout << "Kol-vo linii:\n";
+    cin >> l; 
+    cout << "Kol-vo stolbcov:\n";
+    cin >> c;
+    cout << endl << "Kol-vo elementov pervoi matr: " << endl;
+
+    for(i = 0; i < l; ++i)
+        for(j = 0; j < c; ++j)
+        {
+            cout << "Element a" << i + 1 << j + 1 << ": ";
+            cin >> a[i][j];
+        }
+
+    cout << endl << "Kol-vo elementov vtoroi matr: " << endl;
+    for(i = 0; i < l; ++i)
+        for(j = 0; j < c; ++j)
+        {
+            cout << "Element b" << i + 1 << j + 1 << ": ";
+            cin >> b[i][j]; }
+            for(i = 0; i < l; ++i)
+                for(j = 0; j < c; ++j) sum[i][j] = a[i][j] + b[i][j];
+            cout << endl << "Summa matr: " << endl;
+            for(i = 0; i < l; ++i)
+                for(j = 0; j < c; ++j)
+                {
+                    cout << sum[i][j] << " ";
+                    if(j == c - 1) cout << endl;
+                }
+            return 0;
+}
+
+
+
+
+
+№3
+#include "iostream"
+using namespace std;
+int main()
+{
+    int l, c, a[10][10], b[10][10], i, j;
+    cout << "Kol-vo linii:\n";
+    cin >> l;
+    cout << "Kol-vo stolbcov:\n";
+    cin >> c;
+    cout << endl << "Kol-vo elemetnov pervoi matr: " << endl;
+
+    for(i = 0; i < l; ++i)
+        for(j = 0; j < c; ++j)
+        {
+            cout << "element a" << i + 1 << j + 1 << ": ";
+            cin >> a[i][j];
+
+        }
+    for(i = 0; i < l; ++i){
+        for(j = 0; j < c; ++j)
+            cout << a[i][j] << " ";
+    }
+
+    for(i = 0; i < l; ++i){
+        for(j = 0; j < c; ++j)
+            b[i][j] = a[j][i];
+        }
+    for(i = 0; i < l; ++i){
+        for(j = 0; j < c; ++j)
+            cout << b[i][j] << " ";
+    }
+    
+            return 0;
+}
